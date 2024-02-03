@@ -1,0 +1,11 @@
+<div class="container">
+  <h4> Buscar en el catálogo de la biblioteca </h4>
+  <form [formGroup]="searchForm">
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input matInput formControlName="query">
+    </mat-form-field>
+    <button class="ms-2" mat-raised-button type="submit" (click)="search()" >Buscar</button>
+  </form>
+  <app-search-result [paginatedBook]="paginatedBook" [query]="query" (checkOut)="checkoutBook($event)"></app-search-result>
+</div>

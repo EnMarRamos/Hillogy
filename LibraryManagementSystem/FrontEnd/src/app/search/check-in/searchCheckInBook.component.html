@@ -1,0 +1,21 @@
+<div class="container">
+  <h4>Registrar Libro</h4>
+  <span>Introduzca el ISBN</span>
+  <form [formGroup]="searchCheckInForm">
+    <p>
+      <mat-form-field>
+        <mat-label>ISBN</mat-label>
+        <input matInput type="text" formControlName="isbn">
+      </mat-form-field>
+    </p>
+    <p>
+      <button mat-raised-button (click)="searchToCheckIn()">Buscar</button>
+    </p>
+    <div *ngIf="submitted">
+      <div *ngIf="!success">
+        {{error}}
+      </div>
+    </div>
+  </form>
+  <app-search-result [paginatedBook]="paginatedBook" [checkInBook]="checkInBook" [isCheckIn]="true" (checkIn)="checkIn($event)"></app-search-result>
+</div>

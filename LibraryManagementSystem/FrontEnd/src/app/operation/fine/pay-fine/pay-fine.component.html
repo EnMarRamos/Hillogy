@@ -1,0 +1,19 @@
+<div>
+    <label>
+        Id de la tarjeta : {{cardId}}
+    </label>
+    <label>
+        Importe: {{amount}}
+    </label>
+    <div>
+        <button (click)="payFine(cardId)">Pagar multa</button>
+    </div>
+</div>
+<div *ngIf="submitted">
+    <div *ngIf="success">
+        {{message}}
+    </div>
+    <div *ngIf="!success">
+        {{error}}
+    </div>
+</div>

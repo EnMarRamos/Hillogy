@@ -1,0 +1,25 @@
+<div class="container">
+  <h4> Añadir préstamo para libro</h4>
+  <form [formGroup]="addLoanForm">
+    <p>
+      <span>ISBN: {{isbn}}</span>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Id del Miembro</mat-label>
+        <input matInput formControlName="memberId">
+      </mat-form-field>
+    </p>
+    <p>
+      <button mat-raised-button type="submit" class="btn btn-primary btn-block" (click)="addLoan()">Agregar prestamo</button>
+    </p>
+  </form>
+  <div *ngIf="submitted">
+    <div *ngIf="success">
+      {{message}}
+    </div>
+    <div *ngIf="!success">
+      {{errorMsg}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+  <h4> Formulario para agregar un nuevo Miembro</h4>
+  <form [formGroup]="memberForm">
+    <p>
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="dni">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="address">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <mat-label>Telefono</mat-label>
+        <input matInput type="text" formControlName="phone">
+      </mat-form-field>
+    </p>
+    <button mat-raised-button (click)="addMember()">Agregar Miembro</button>
+  </form>
+
+  <div *ngIf="submitted">
+    <div *ngIf="success">
+      {{message}}
+    </div>
+    <div *ngIf="!success">
+      {{errorMsg}}
+    </div>
+  </div>
+</div>

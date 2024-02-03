@@ -1,0 +1,23 @@
+<div *ngIf="paginatedBook">
+  <span>Total Result : {{paginatedBook.pagination.totalCount}}</span>
+  <div *ngIf="paginatedBook.books.length <= 0">No Results found</div>
+  <div *ngIf="paginatedBook.books.length > 0">
+    <mat-card *ngFor="let b of paginatedBook.books" class="my-2">
+      <mat-card-header>
+        <mat-card-title><h4>{{b.title}}</h4></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>ISBN : {{b.isbn}}</div>
+        <div>
+          Authors: <span>{{b.concatenatedAuthors}}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="checkOutEmit(b.isbn)" *ngIf="!isCheckIn">Checkout</button>
+        <button mat-raised-button (click)="checkInEmit(b.isbn, b.member.memberId)" *ngIf="isCheckIn">Check In</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-paginator #paginator [length]="paginatedBook.pagination.totalCount" [pageSize]="paginatedBook.pagination.size" [pageSizeOptions]="[5,10,25,100]"
+    (page)="fetchNext($event)"></mat-paginator>
+  </div>
+</div>
